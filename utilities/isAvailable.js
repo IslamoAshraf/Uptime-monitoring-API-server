@@ -1,21 +1,14 @@
 import { _axios } from "../configurations/axiosConfig.js";
-import { Url } from "../modules/urls/model/urlsModel.js";
 
-const isAvailable = async (urlData) => {
-  let status;
+const isAvailable = async (url) => {
   try {
-    const response = await _axios.get(urlData.url);
-    if (response.status >= 100 && response.status <= 399) {
-      status = true;
-    } else {
-      status = false;
-    }
+    const response = await _axios.get(url);
+    const responseTime = response.headers["request-duration"];
+
+    let isOnline = response.status >= 100 && response.status <= 399;
+    return { responseTime, isOnline };
   } catch (error) {
-    status = false;
-  } finally {
-    await Url.findByIdAndUpdate(urlData._id, {
-      status,
-    });
+    return false;
   }
 };
 export { isAvailable };

@@ -4,7 +4,6 @@ import https from "https";
 const _axios = axios.create({
   httpsAgent: new https.Agent({
     rejectUnauthorized: false,
-    timeout: 5 * 1000,
   }),
 });
 

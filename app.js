@@ -16,6 +16,4 @@ app.listen(3000);
 job.start();
 
 ///prevent node app from crashing
-process.on("uncaughtException", function (err) {});
-
-// cronJob.start();
+// process.on("uncaughtException", function (err) {});

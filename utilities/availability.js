@@ -9,6 +9,7 @@ const availability = async (urlData) => {
     await Url.findByIdAndUpdate(urlData._id, {
       availability: (availabilityCalculation + availabilityCalculation) / 2,
     });
+
   } catch (error) {
     console.log(error);
   }
